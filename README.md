@@ -1,6 +1,6 @@
 # Longitudinal Voice Biomarker Sandbox
 
-> **Status: working prototype.**  
+> **Working Prototype.**  
 > A small synthetic simulation sandbox for exploring how within-person
 > variability, measurement noise, missing recordings, and alert settings may
 > affect longitudinal voice monitoring.
@@ -8,9 +8,7 @@
 ## Why
 
 Much of longitudinal vocal biomarker work focuses on differences between
-clinical groups and on identifying useful speech tasks and features.
-
-However, a voice measurement that distinguishes groups is not automatically
+clinical groups and on identifying useful speech tasks and features. However, a voice measurement that distinguishes groups is not automatically
 useful for monitoring one person over time.
 
 In a longitudinal setting, an observed change may contain several components:
@@ -24,8 +22,8 @@ A monitoring system also has to balance two competing goals:
 - detecting a real change early;
 - avoiding frequent false alerts during a stable period.
 
-This project is a small simulation for making those assumptions and trade-offs
-visible before working with real longitudinal data.
+So, this project is a small simulation for making those assumptions and trade-offs
+visible before working with real longitudinal data, and to remind myself what is required in designing a longitudinal study.
 
 ## Main question
 
@@ -261,41 +259,4 @@ evaluate_simulations(config, rng)
 plot_trajectory(result)
 ```
 
-The random-number generator is passed explicitly so that the same configuration
-and seed produce the same result.
 
-## Tests
-
-- reproducibility with a fixed random seed;
-- validation that the change occurs after the baseline period;
-- detection of a large change under low-noise conditions;
-- confirmation requirements for an alert;
-- interruption of confirmation by missing observations;
-- correct handling of positive and negative changes;
-- non-negative detection delays;
-- insufficient baseline observations;
-- Monte Carlo probabilities remaining between zero and one.
-
-## Current progress
-
-- [x] Define the methodological question
-- [x] Limit the first-version scope
-- [x] Specify the simulation model
-- [x] Specify the alert rule and evaluation outputs
-- [x] Implement configuration validation
-- [x] Implement synthetic trajectory generation
-- [x] Implement change detection
-- [x] Implement repeated simulation
-- [x] Add visualization and exports
-- [x] Add the Gradio interface
-- [x] Add tests and automated checks
-
-## Intended takeaway
-
-This project is not a clinical monitoring system. It is a small methodological
-sandbox built around one idea:
-
-> Before interpreting a longitudinal change in a voice measurement as a
-> health-related change, it is necessary to understand how the alert interacts
-> with natural variability, measurement noise, missing observations, and the
-> chosen decision threshold.
